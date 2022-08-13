@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/shaka-player/3.1.6/shaka-player.ui.debug.min.js"></script>
+<script src="~/js/videoPlayer.js" asp-append-version="true"></script>
+<script src="~/js/camera.js" asp-append-version="true"></script>
+
+<div class="text-center">
+    <video id="videoPlayer" controls autoplay preload="auto" plays-inline class="col-12 mx-auto"></video>
+
+    <input type="hidden" id="token" value="@Model.Token"/>
+    <input type="hidden" id="manifestUrl" value="@Model.VideoUrl"/>
+    <input type="hidden" id="locatorId" value="@Model.LocatorId"/>
+</div>
+
