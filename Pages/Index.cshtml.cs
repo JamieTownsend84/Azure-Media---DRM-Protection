@@ -16,7 +16,10 @@ namespace VideoPlayer.Pages
 
         public async Task OnGet()
         {
-            var locatorId = Guid.Parse("2d6c2a0e-5af6-454a-8f3e-5f0f8247170e");
+            //var locatorId = Guid.Parse("2d6c2a0e-5af6-454a-8f3e-5f0f8247170e");
+            var locatorId = Guid.Parse("2657f6d4-a589-4ea6-b78c-74f21f0f9d66");
+
+
             var streamingLocator = await _mediaService.GetStreamingLocator(locatorId);
             var token = _mediaService.GetToken(streamingLocator.ContentKey);
 

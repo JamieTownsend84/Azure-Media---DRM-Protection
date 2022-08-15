@@ -28,9 +28,8 @@ namespace VideoPlayer.Repository
                 return new StreamingLocator();
             }
 
-            var contentKeys = await client.StreamingLocators.ListContentKeysAsync(_amsConfiguration.ResourceGroup,
-                _amsConfiguration.AccountName, locator.Name);
-            var contentKey = contentKeys.ContentKeys.FirstOrDefault()?.Value;
+            var contentKeys = await client.StreamingLocators.ListContentKeysAsync(_amsConfiguration.ResourceGroup, _amsConfiguration.AccountName, locator.Name);
+            var contentKey = contentKeys.ContentKeys.FirstOrDefault(x => x.PolicyName == "umbraco_dragonfly_ckp")?.Value;
             var streamingUrls = new List<string>();
             var streamingEndpoint = await client.StreamingEndpoints.GetAsync(_amsConfiguration.ResourceGroup, _amsConfiguration.AccountName, DefaultStreamingEndpointName);
             var paths = await client.StreamingLocators.ListPathsAsync(_amsConfiguration.ResourceGroup, _amsConfiguration.AccountName, locator.Name);
